@@ -139,7 +139,7 @@ Here we provide a simple example of loading the tokenizer and model to generate 
 from transformers import AutoModelForCausalLM, AutoTokenizer, AutoConfig, QuantoConfig, GenerationConfig
 
 # load hf config
-hf_config = AutoConfig.from_pretrained("MiniMax-Text-01", trust_remote_code=True)
+hf_config = AutoConfig.from_pretrained("MiniMaxAI/MiniMax-Text-01", trust_remote_code=True)
 
 # quantization config, int8 is recommended
 quantization_config =  QuantoConfig(
@@ -151,21 +151,24 @@ quantization_config =  QuantoConfig(
             + [f"model.layers.{i}.block_sparse_moe.gate" for i in range(hf_config.num_hidden_layers)]
         )
 
+
+# assume 8 GPUs
+world_size = 8
+layers_per_device = hf_config.num_hidden_layers // world_size
+
 # set device map
 device_map = {
     'model.embed_tokens': 'cuda:0',
     'model.norm': f'cuda:{world_size - 1}',
     'lm_head': f'cuda:{world_size - 1}'
 }
-# assume 8 GPUs
-world_size = 8
-layers_per_device = hf_config.num_hidden_layers // world_size
+
 for i in range(world_size):
     for j in range(layers_per_device):
         device_map[f'model.layers.{i * layers_per_device + j}'] = f'cuda:{i}'
 
 # load tokenizer
-tokenizer = AutoTokenizer.from_pretrained("MiniMax-Text-01")
+tokenizer = AutoTokenizer.from_pretrained("MiniMaxAI/MiniMax-Text-01")
 prompt = "Hello!"
 messages = [
     {"role": "system", "content": [{"type": "text", "text": "You are a helpful assistant created by MiniMax based on MiniMax-Text-01 model."}]},
@@ -181,7 +184,7 @@ model_inputs = tokenizer(text, return_tensors="pt").to("cuda")
 
 # load bfloat16 model, move to device, and apply quantization
 quantized_model = AutoModelForCausalLM.from_pretrained(
-    "MiniMax-Text-01",
+    "MiniMaxAI/MiniMax-Text-01",
     torch_dtype="bfloat16",
     device_map=device_map,
     quantization_config=quantization_config,
@@ -201,6 +204,7 @@ generated_ids = [
     output_ids[len(input_ids):] for input_ids, output_ids in zip(model_inputs.input_ids, generated_ids)
 ]
 response = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)[0]
+print(f"response: {response}")
 ```
 
 ## 5. Chatbot & API
