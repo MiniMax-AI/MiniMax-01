@@ -350,7 +350,7 @@ For production deployment, we recommend using [vLLM](https://docs.vllm.ai/en/lat
 - 📦 Powerful batch request processing capability
 - ⚙️ Deeply optimized underlying performance
 
-For detailed deployment instructions, please refer to our [vLLM Deployment Guide](docs/vllm_deployment_guild.md).
+For detailed deployment instructions, please refer to our [vLLM Deployment Guide](docs/vllm_deployment_guide.md).
 
 ## 6. Citation
 

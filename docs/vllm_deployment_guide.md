@@ -1,6 +1,6 @@
 # 🚀 MiniMax-Text-01 Model vLLM Deployment Guide
 
-[VLLM中文版部署指南](./vllm_deployment_guild_cn.md)
+[VLLM中文版部署指南](./vllm_deployment_guide_cn.md)
 
 ## 📖 Introduction
 
