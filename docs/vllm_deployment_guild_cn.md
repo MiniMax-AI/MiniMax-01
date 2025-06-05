@@ -72,13 +72,13 @@ git clone https://huggingface.co/MiniMaxAI/MiniMax-VL-01
 
 1. 获取容器镜像：
 ```bash
-docker pull vllm/vllm-openai:v0.7.1
+docker pull vllm/vllm-openai:v0.8.3
 ```
 
 2. 运行容器：
 ```bash
 # 设置环境变量
-IMAGE=vllm/vllm-openai:v0.7.1
+IMAGE=vllm/vllm-openai:v0.8.3
 MODEL_DIR=<模型存放路径>
 CODE_DIR=<代码路径>
 NAME=MiniMaxImage

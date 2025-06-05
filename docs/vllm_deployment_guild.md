@@ -74,13 +74,13 @@ To ensure consistency and stability of the deployment environment, we recommend 
 
 1. Get the container image:
 ```bash
-docker pull vllm/vllm-openai:v0.7.1
+docker pull vllm/vllm-openai:v0.8.3
 ```
 
 2. Run the container:
 ```bash
 # Set environment variables
-IMAGE=vllm/vllm-openai:v0.7.1
+IMAGE=vllm/vllm-openai:v0.8.3
 MODEL_DIR=<model storage path>
 CODE_DIR=<code path>
 NAME=MiniMaxImage
