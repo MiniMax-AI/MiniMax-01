@@ -1,0 +1,39 @@
+name: Feature Request
+description: Propose a new feature or enhancement for the project.
+title: "[request]: "
+labels: ["enhancement", "feature-request", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting a new feature! Please provide the following details to help us understand your proposal.
+
+  - type: input
+    id: feature-about
+    attributes:
+      label: Basic Information - Feature about
+      description: "Please briefly describe the feature, including the type of use and the framework, e.g., support Minimax-M1 in Ollama."
+      placeholder: "e.g., support Minimax-M1 in Ollama."
+    validations:
+      required: true 
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposal
+      description: |
+        Please describe the feature you have requested and the rationale behind it.
+        The following template is recommended. Feel free to modify it as you needed.
+      value: |
+        #### Introduction
+        I would like that ...
+
+        #### Rational
+        Implementation of this feature will help the following usecase:
+        - ...
+        - ...
+
+        #### Anything else
+        I find ... has this feature and xxx can serve as a reference for implementation.
+    validations:
+      required: true 

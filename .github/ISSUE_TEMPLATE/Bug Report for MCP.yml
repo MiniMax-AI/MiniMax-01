@@ -1,0 +1,100 @@
+name: Bug Report for MCP&API
+description: Report a bug related to MCP and API tasks to help us reproduce and fix the problem.
+title: "[Bug for MCP&API]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for contributing to our project by reporting a bug! To help us understand and resolve the issue as quickly as possible, please provide the following details.
+
+  - type: input
+    attributes:
+      label: Basic Information - Models Used
+      description: |
+        Please list the model used, e.g., MiniMax-M1, speech-02-hd, etc.
+        Our models can be referred at [HuggingFace](https://huggingface.co/MiniMaxAI) or [the official site](https://www.minimax.io/platform_overview).
+      placeholder: "ex: MiniMax-M1"
+    validations:
+      required: true
+      
+  - type: input
+    id: scenario-description
+    attributes:
+      label: Basic Information - Scenario Description
+      description: | 
+        Please briefly describe the scenario, including the framework or the platform, 
+      placeholder: "ex: Minimax-M1 cannot be called as MCP tools. "
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: problem-validation
+    attributes:
+      label: Is this bug known and solvable?
+      options:
+        - label: "I have followed the GitHub READMEs for [`Minimax-MCP`](https://github.com/MiniMax-AI/MiniMax-MCP) and [`Minimax-MCP-JS`](https://github.com/MiniMax-AI/MiniMax-MCP-JS)."
+          required: true
+        - label: "I have checked the [official Minimax documentation](https://www.minimax.io/platform_overview) and [existing GitHub issues](https://github.com/MiniMax-AI/MiniMax-MCP/issues)，but found no solution."
+          required: true
+
+  - type: textarea
+    attributes:
+      label: Information about environment
+      description: |
+        Please provide information about you environment, 
+        e.g., the software versions and the information on the OS, GPUs, python packages(from pip list) if available.
+      placeholder:
+        "For example:
+        - OS: Ubuntu 24.04
+        - Python: Python 3.11
+        - PyTorch: 2.6.0+cu124"
+        
+    validations:
+      required: true
+
+  - type: input
+    id: trace-id
+    attributes:
+      label: Trace-ID in the request head
+      description: "Please copy and paste the trace-ID of the problematic request."
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Description
+      description: |
+        Please **describe the bug** you have encountered when using the MCP tools or API, and **paste the screenshots** of the error or unexpected behaviour here.
+        The following template is recommended.
+        Feel free to modify as you needed.
+      value: |
+        #### Steps to reproduce
+
+        This happens to Minimax_M1 and xxx.
+        The bug can be reproduced with the following steps:
+        1. ...
+        2. ...
+
+        The following example input & output can be used:
+        ```
+        system: ...
+        user: ...
+        ...
+        ```
+
+        #### Expected results
+
+        The results are expected to be ...
+
+        #### Actual behaviours
+
+        The actual outputs are as follows: ...
+
+        #### Error logs
+
+        The error logs are as follows: ...
+
+        ### The screenshots are as belows:
+    validations:
+      required: true

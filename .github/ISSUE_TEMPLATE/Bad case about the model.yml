@@ -1,0 +1,101 @@
+name: Bad Case Report of the model
+description: Report a bug related to the model to help us reproduce and fix the problem.
+title: "[BadCase about the model]: "
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for contributing to our project by reporting a bad case! To help us understand and resolve the issue as quickly as possible, please provide the following details.
+
+  - type: input
+    id: models-used
+    attributes:
+      label: Basic Information - Models Used
+      description: |
+        Please list the model used, e.g., MiniMax-M1, speech-02-hd, etc.
+        (Note: You can refer to our models at [HuggingFace](https://huggingface.co/MiniMaxAI) or [the official site](https://www.minimax.io/platform_overview) for more details.)
+      placeholder: "ex: MiniMax-M1"
+    validations:
+      required: true
+
+  - type: input
+    id: scenario-description
+    attributes:
+      label: Basic Information - Scenario Description
+      description: |
+        Please briefly describe the scenario, including the framework or the platform.
+      placeholder: "ex: Minimax-M1 return the error related to xxx."
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: problem-validation
+    attributes:
+      label: Is this badcase known and solvable?
+      options:
+        - label: "I have followed the [GitHub README](https://github.com/MiniMax-AI) of the model and found no duplicates in existing issues."
+          required: true
+        - label: "I have checked [Minimax documentation](https://www.minimax.io/platform_overview) and found no solution."
+          required: true
+          
+  - type: textarea
+    id: environment-info
+    attributes:
+      label: Information about environment
+      description: |
+        (Include software versions, OS, GPUs if applicable)
+      placeholder: |
+        For example:
+        - OS: Ubuntu 24.04
+        - Python: Python 3.11
+        - PyTorch: 2.6.0+cu124
+    validations:
+      required: true
+
+  - type: textarea
+    id: call-execution-info # Consolidated field for call type and details
+    attributes:
+      label: Call & Execution Information
+      description: |
+        Please describe how you are interacting with the model and provide the relevant details in the box below:
+        **Call Type**: (e.g., API Call, Deployment Call)
+        **If API Call**: Please provide the `trace-ID` of the problematic request.
+        **If Deployment Call**: Please provide the command used for deployment or inference.
+      placeholder: |
+        # Example for API Call:
+        Call Type: API Call
+        Trace-ID: abcdef1234567890
+
+        # Example for Deployment Call:
+        Call Type: Deployment Call
+        Deployment Command: python run_inference.py --model my_model --config config.yaml
+    validations:
+      required: true
+
+  - type: textarea
+    id: description-of-bug
+    attributes:
+      label: Description
+      description: |
+        Please **describe the bad case** you have encountered and **paste the screenshots** if available.
+        The following template is recommended (modify as needed):
+      value: |
+        ### Steps to reproduce
+        The bug can be reproduced with the following steps:
+        1. ...
+        2. ...
+
+        ### Expected behavior
+        The results are expected to be: ...
+
+        ### Actual behavior
+        The actual outputs are as follows: ...
+
+        ### Error logs
+        The error logs are as follows:
+        ```
+        # Paste the related screenshots here
+        ```
+    validations:
+      required: true

@@ -1,0 +1,42 @@
+name: Model Inquiry
+description: Ask a question about the open source models.
+title: "[Inquiry]: "
+labels: ["question", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reaching out! Please provide the following details to help us understand and address your inquiry about models.
+
+  - type: input
+    attributes:
+      label: Basic Information - Models Used
+      description: |
+        Please list the model used, e.g., MiniMax-M1, speech-02-hd, etc.
+        Our models can be referred at [HuggingFace](https://huggingface.co/MiniMaxAI) or [the official site](https://www.minimax.io/platform_overview).
+      placeholder: "ex: MiniMax-M1"
+    validations:
+      required: true
+      
+  - type: checkboxes
+    id: problem-validation
+    attributes:
+      label: Is this information known and solvable?
+      options:
+        - label: "I have checked [Minimax documentation](https://www.minimax.io/platform_overview) and found no solution."
+          required: true
+        - label: "I have searched existing issues and found no duplicates."
+          required: true
+
+
+  - type: textarea
+    id: detailed-description
+    attributes:
+      label: Description
+      description: "Please describe your question in detail here. If available, please paste relevant screenshots directly into this box."
+      placeholder: |
+        - Your detailed question or issue description.
+        - Relevant context or background information.
+        - (Paste screenshots directly below this text)
+    validations:
+      required: true
